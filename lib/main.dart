@@ -1,3 +1,4 @@
+import 'package:exemplo_tamanho_tela/layout_builder_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,6 +17,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: <String, WidgetBuilder>{
+        "/layout_builder": (_) => LayoutBuilderPage()
+      }
     );
   }
 }
@@ -51,6 +55,16 @@ class _MyHomePageState extends State<MyHomePage> {
              color: Colors.orange,
              width: MediaQuery.of(context).size.width,
              height: heightAvailable * .5,
+             child: Column(
+               mainAxisAlignment: MainAxisAlignment.center,
+               crossAxisAlignment: CrossAxisAlignment.center,
+               children: [
+                 ElevatedButton(
+                     onPressed: () => Navigator.of(context).pushNamed("/layout_builder"),
+                     child: Text("Ir para tela com Layout Builder")
+                 ),
+               ],
+             )
            ),
             Container(
               color: Colors.blueAccent,
